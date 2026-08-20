@@ -1,0 +1,361 @@
+[
+    {
+        "desc": "网易云游戏",
+        "url": "https://n.cg.163.com/api/v1/phone-captchas/86-[phone]",
+        "method": "POST",
+        "header": "",
+        "data": "{'etc': {'validate': ''}}"
+    },
+    {
+        "desc": "返利app(24小时限制)",
+        "url": "https://passport.fanli.com/mobileapi/i/user/mobileFastReg?jsoncallback=jQuery21105357980471043338_[timestamp]&mobile=[phone]&countrycode=86&mobilestep=1&_=[timestamp]",
+        "method": "GET",
+        "header": "",
+        "data": ""
+    },
+    {
+        "desc": "广东省心理学会",
+        "url": "http://gpa-gd.scnu.edu.cn/member/index/public_send_code.html",
+        "method": "POST",
+        "header": "",
+        "data": "{'phone': '[phone]'}"
+    },
+    {
+        "desc": "费耘网",
+        "url": "https://www.feeclouds.com/homepage/register/send",
+        "method": "POST",
+        "header": "",
+        "data": "{'mobile': '[phone]'}"
+    },
+    {
+        "desc": "网心云APP",
+        "url": "https://account-box.onethingpcs.com/xluser.core.login/v3/sendsms",
+        "method": "POST",
+        "header": null,
+        "data": {
+            "protocolVersion": "301",
+            "sequenceNo": "1000001",
+            "platformVersion": "10",
+            "isCompressed": "0",
+            "appid": "22017",
+            "clientVersion": "3.15.1",
+            "peerID": "00000000000000000000000000000000",
+            "appName": "ANDROID-com.onethingcloud.android",
+            "sdkVersion": "204500",
+            "devicesign": "div101.095893e2bfa13a199f83691076c8bbb9ab0d01f75c929975048142c2fa38402b",
+            "netWorkType": "WIFI",
+            "providerName": "NONE",
+            "deviceModel": "M2102J2SC",
+            "deviceName": "Xiaomi M2102j2sc",
+            "OSVersion": "11",
+            "creditkey": "",
+            "hl": "zh-CN",
+            "mobile": "[phone]",
+            "register": "0"
+        }
+    },
+    {
+        "desc": "乐教乐学",
+        "url": "http://id.lejiaolexue.com/api/sendvericode.ashx?phone=[phone]",
+        "method": "GET",
+        "header": null,
+        "data": null
+    },
+    {
+        "desc": "秘塔写作",
+        "url": "https://xiezuocat.com/verify?type=signup",
+        "method": "POST",
+        "header": null,
+        "data": {
+            "phone": "86-[phone]"
+        }
+    },
+    {
+        "desc": "彩云小译",
+        "url": "https://biz.caiyunapp.com/v1/send_sms_code",
+        "method": "POST",
+        "header": "{'Referer': 'https://fanyi.caiyunapp.com/', 'Cy-Token': 'token 9876032166'}",
+        "data": "{'phone_num': '[phone]', 'area_code': '86'}"
+    },
+    {
+        "desc": "AI口语陪练",
+        "url": "https://saas-base.zaker.cn/api/user/auth/captcha/mobile?mobile=[phone]",
+        "method": "GET",
+        "header": "",
+        "data": ""
+    },
+    {
+        "desc": "HiFleet",
+        "url": "https://www.hifleet.com/hifleetapi/sendVerifyMessage.do?&_v=5.4.65",
+        "method": "POST",
+        "header": {
+            "accept": "application/json, text/plain, */*",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+            "content-type": "application/x-www-form-urlencoded;charset=UTF-8",
+            "pragma": "no-cache",
+            "priority": "u=1, i",
+            "sec-ch-ua": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Microsoft Edge\";v=\"140\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "cookie": "JSESSIONID=BEE24A5BB2A014302C2384DE4ED37ADE",
+            "Referer": "https://www.hifleet.com/"
+        },
+        "data": "phone=[phone]"
+    },
+    {
+        "desc": "winechun",
+        "url": "https://www.winechun.com/index.php?route=extension/sms/aliyun/create_mobile_code",
+        "method": "POST",
+        "header": {
+            "accept": "*/*",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+            "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "pragma": "no-cache",
+            "priority": "u=1, i",
+            "sec-ch-ua": "\"Chromium\";v=\"140\", \"Not=A?Brand\";v=\"24\", \"Microsoft Edge\";v=\"140\"",
+            "sec-ch-ua-mobile": "?0",
+            "sec-ch-ua-platform": "\"Windows\"",
+            "sec-fetch-dest": "empty",
+            "sec-fetch-mode": "cors",
+            "sec-fetch-site": "same-origin",
+            "x-requested-with": "XMLHttpRequest",
+            "cookie": "PHPSESSID=4pmdpaggs071pt7edolh5kofto; default=eke1j1gqduqnf246iehmpcq4id; language=zh-cn; currency=CNY; api=nm87826sp1odm2crj8b7gd8eo2",
+            "Referer": "https://www.winechun.com/h5/login.php"
+        },
+        "data": "telephone=[phone]"
+    },
+    {
+        "desc": "Unipus 接口(原项目)",
+        "url": "http://ic.service.unipus.cn/cert/vcode?phone=[phone]&districtNumber=86&_t=[timestamp]&r=1000",
+        "method": "GET",
+        "header": {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36",
+            "Accept": "*/*",
+            "Referer": "http://ic.service.unipus.cn/"
+        },
+        "data": ""
+    },
+    {
+        "desc": "汕头物流(原项目)",
+        "url": "http://47.95.130.254/tms-ctwl/orderRegisterUser/getPollCode",
+        "method": "POST_FORM",
+        "header": {
+            "Connection": "keep-alive",
+            "Accept": "application/json, text/plain, */*",
+            "openid": "oXalBt56PCHydrOSENofeScQIKHE",
+            "appId": "wx9cfe64df69ecd34c",
+            "terminal": "Android",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Origin": "http://gzh.scmmgr.com",
+            "X-Requested-With": "com.tencent.mn",
+            "Referer": "http://gzh.scmmgr.com/",
+            "Accept-Encoding": "gzip, deflate",
+            "Accept-Language": "zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7"
+        },
+        "data": {
+            "mobileNo": "[phone]",
+            "machineId": "oXalBt56PCHydrOSENofeScQIKHE",
+            "tenantId": "101",
+            "companyId": "1001",
+            "terminal": "Android",
+            "module": "login"
+        }
+    },
+    {
+        "desc": "必腾平台(原项目)",
+        "url": "https://vipapi.beteng.com/VIP/DoSendByCellPhone",
+        "method": "POST_JSON",
+        "header": {
+            "Content-Type": "application/json",
+            "charset": "utf-8",
+            "Accept-Encoding": "gzip,compress,br,deflate",
+            "Referer": "https://servicewechat.com/wx32e61224bdb979ff/166/page-frame.html"
+        },
+        "data": {
+            "ID": 0,
+            "Cellphone": "[phone]"
+        }
+    },
+    {
+        "desc": "快商通(原项目)",
+        "url": "https://shop.kuaishang.cn/OnlineReg//v2/sendSms.do",
+        "method": "POST",
+        "header": {
+            "Host": "shop.kuaishang.cn",
+            "Connection": "keep-alive",
+            "Accept": "*/*",
+            "X-Requested-With": "XMLHttpRequest",
+            "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "Origin": "https://shop.kuaishang.cn",
+            "Sec-Fetch-Site": "same-origin",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Dest": "empty",
+            "Referer": "https://shop.kuaishang.cn/index.htm"
+        },
+        "data": "phone=[phone]&authCode=&isSms=true"
+    },
+    {
+        "desc": "拉勾网(原项目)",
+        "url": "https://passport.lagou.com/register/isBlack/getPhoneVerificationCode.json",
+        "method": "POST_FORM",
+        "header": {
+            "Accept": "*/*",
+            "Accept-Encoding": "gzip, deflate, br, zstd",
+            "Accept-Language": "zh-CN,zh;q=0.9",
+            "Connection": "keep-alive",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Host": "passport.lagou.com",
+            "Origin": "https://www.lagou.com",
+            "Referer": "https://www.lagou.com/",
+            "Sec-Fetch-Dest": "empty",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Site": "same-site",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36",
+            "X-Requested-With": "XMLHttpRequest"
+        },
+        "data": "phone=[phone]"
+    },
+    {
+        "desc": "乐荣收(原项目)",
+        "url": "https://www.lehuiso.com/send.php?v=0111&mobile=[phone]&type=login&code=",
+        "method": "GET",
+        "header": "",
+        "data": ""
+    },
+    {
+        "desc": "中国心理学会(原项目)",
+        "url": "http://nacp2020.psysoc.org.cn/home/verifycode.php?code=get&mobile=[phone]",
+        "method": "GET",
+        "header": "",
+        "data": ""
+    },
+    {
+        "desc": "Daojia配送(原项目)",
+        "url": "https://user.daojia.com/user/getSmscode?mobile=[phone]&bu=",
+        "method": "GET",
+        "header": "",
+        "data": ""
+    },
+    {
+        "desc": "小叶子在线(原项目)",
+        "url": "https://aitob.xiaoyezi.com/student_wx/student/send_sms_code?mobile=[phone]",
+        "method": "GET",
+        "header": "",
+        "data": ""
+    },
+    {
+        "desc": "JD API(原项目)",
+        "url": "https://jdapi.jd100.com/uc/v1/getSMSCode?account=[phone]&sign_type=1&use_type=0",
+        "method": "GET",
+        "header": "",
+        "data": ""
+    },
+    {
+        "desc": "征途游戏(原项目)",
+        "url": "https://reg.ztgame.com/common/sendmpcode?source=giant_site&type=verifycode&phone=[phone]",
+        "method": "GET",
+        "header": {"Referer": "https://reg.ztgame.com/"},
+        "data": ""
+    },
+    {
+        "desc": "运荔枝(新增)",
+        "url": "https://sso.yunlizhi.cn/login/sms_code/send",
+        "method": "POST",
+        "header": {
+            "accept": "application/json, text/plain, */*",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "authorization": "null",
+            "cache-control": "no-cache",
+            "content-type": "application/json",
+            "pragma": "no-cache"
+        },
+        "data": {
+            "clientCode": "open_platform",
+            "mobile": "[phone]",
+            "smsType": "UNIFY_USER_LOGIN"
+        }
+    },
+    {
+        "desc": "H5游戏(新增)",
+        "url": "https://h5.5173.com/to_url/api/front/login/register/password/phone/code",
+        "method": "POST",
+        "header": {
+            "accept": "*/*",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+            "content-type": "application/json",
+            "pragma": "no-cache"
+        },
+        "data": {"phone": "[phone]"}
+    },
+    {
+        "desc": "微盟企业系统(新增)",
+        "url": "https://account.weimob.com/v2/api/console/getCodeRs",
+        "method": "POST",
+        "header": {
+            "accept": "*/*",
+            "accept-language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "cache-control": "no-cache",
+            "content-type": "application/json; charset=utf-8",
+            "pragma": "no-cache",
+            "weimob-country": "CN",
+            "weimob-language": "zh"
+        },
+        "data": {
+            "zone": "0086",
+            "phoneNumber": "[phone]",
+            "pageName": "codeLogin"
+        }
+    },
+    {
+        "desc": "富联康物流(新增)",
+        "url": "https://www.fulykong.com/dx.php?phone=[phone]",
+        "method": "POST",
+        "header": "",
+        "data": ""
+    },
+    {
+        "desc": "HR天下(新增)",
+        "url": "https://wfrcsc.com/hrdp/common/sendSMS",
+        "method": "POST",
+        "header": {
+            "Host": "wfrcsc.com",
+            "Connection": "keep-alive",
+            "Accept": "application/json, text/plain, */*",
+            "X-Requested-With": "XMLHttpRequest",
+            "Content-Type": "application/json;charset=UTF-8",
+            "Origin": "https://wfrcsc.com",
+            "Sec-Fetch-Site": "same-origin",
+            "Sec-Fetch-Mode": "cors",
+            "Sec-Fetch-Dest": "empty",
+            "Referer": "https://wfrcsc.com/mobile/index/appRegister"
+        },
+        "data": {
+            "mobile": "[phone]",
+            "tag": "register",
+            "isApp": "false"
+        }
+    },
+    {
+        "desc": "云快递(新增)",
+        "url": "https://wechat.yunexpress.cn/api/verify/sendauthcode",
+        "method": "POST",
+        "header": {
+            "Accept": "application/json, text/plain, */*",
+            "Accept-Language": "zh-CN,zh;q=0.9,en;q=0.8",
+            "Cache-Control": "no-cache",
+            "Content-Type": "application/json;charset=UTF-8",
+            "Pragma": "no-cache"
+        },
+        "data": {
+            "account": "[phone]",
+            "ImgCode": "",
+            "type": "3"
+        }
+    }
+]
