@@ -11,14 +11,18 @@ export async function onRequest(context) {
   const pathname = url.pathname;
 
   // 1. 静态资源和本站关键路径绕过（让 Pages 原生处理）
-  const isStaticAsset =
+  // ⚠️ 必须排除带 ?url= 的代理请求：代理 URL 形如 /?url=TARGET，pathname 永远是 "/"，
+  //    若不排除会被误判为访问首页，导致 POST 收到 405、GET 返回 HTML 页面而非 API 响应
+  const isProxyRequest = url.searchParams.has("url");
+  const isStaticAsset = !isProxyRequest && (
     pathname === "/" ||
     pathname === "/index.html" ||
     pathname === "/logo.ico" ||
     pathname === "/logo.gif" ||
     pathname === "/_headers" ||
     pathname === "/wrangler.toml" ||
-    pathname === "/wrangler.json";
+    pathname === "/wrangler.json"
+  );
 
   if (isStaticAsset) {
     return context.next();
