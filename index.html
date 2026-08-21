@@ -314,7 +314,7 @@ button:hover {
 
     <script>
 
-                // ⭐ API 列表从外部 JSON 文件加载（api_export (1).json）
+                // ⭐ API 列表从外部 JSON 文件加载（api.json）
         // 说明：该文件需与 index.html 处于同一可访问目录，并建议通过 HTTP 服务（而非 file://）打开，
         //       因为浏览器对 file:// 下的 fetch 有 CORS 限制。每条配置的字段为：
         //       desc(说明) / url(含 [phone] 占位符) / method(GET|POST) /
@@ -324,7 +324,7 @@ button:hover {
         let apiRequests = [];
 
         async function initApis() {
-            const API_FILE = 'api_export (1).json';
+            const API_FILE = 'api.json';
             try {
                 const res = await fetch(API_FILE, { cache: 'no-store' });
                 if (!res.ok) throw new Error('HTTP ' + res.status);
@@ -334,7 +334,7 @@ button:hover {
                 addLog('⚙️ 已加载 ' + list.length + ' 个接口配置', 'system');
             } catch (e) {
                 addLog('❌ 加载 API 文件失败：' + e.message, 'error');
-                addLog('💡 请将 api_export (1).json 与 index.html 放在同一目录，并通过 HTTP 服务打开', 'info');
+                addLog('💡 请将 api.json 与 index.html 放在同一目录，并通过 HTTP 服务打开', 'info');
                 apiRequests = [];
             }
         }
