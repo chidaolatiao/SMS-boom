@@ -4,14 +4,18 @@ export default {
     const pathname = url.pathname;
 
     // 1. 静态资源和本站关键路径绕过（交由 Workers Assets 原生处理）
-    const isStaticAsset =
+    // ⚠️ 必须排除带 ?url= 参数的代理请求，否则 pathname="/" 会把所有代理请求劫持到静态资源分支，
+    //    导致 POST 代理收到 405（Assets 不接受 POST）、GET 代理返回 HTML 页面而非 API 响应
+    const isProxyRequest = url.searchParams.has("url");
+    const isStaticAsset = !isProxyRequest && (
       pathname === "/" ||
       pathname === "/index.html" ||
       pathname === "/logo.ico" ||
       pathname === "/logo.gif" ||
       pathname === "/_headers" ||
       pathname === "/wrangler.toml" ||
-      pathname === "/wrangler.json";
+      pathname === "/wrangler.json"
+    );
 
     if (isStaticAsset) {
       // 在 Workers Assets 中，如果不是由脚本处理，会自动尝试匹配静态资源
