@@ -7,3 +7,8 @@ compatibility_date = "2024-01-01"
 [assets]
 directory = "."
 binding = "ASSETS"
+# ⚠️ 关键修复：默认「静态资源优先」会把路径 "/" 直接匹配到 index.html，
+# 导致 index.js 的代理逻辑永远不执行（POST 405 / GET 返回首页HTML）。
+# 设为 true 改为「Worker 优先」，由 index.js 内的 isStaticAsset 判断
+# 普通路径走 ASSETS、带 ?url= 的代理请求走真实转发。
+run_worker_first = true
