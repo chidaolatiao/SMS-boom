@@ -4556,7 +4556,7 @@ button:hover {
                 // 每次任务执行都重新生成，配合 repeat 展开即还原 Unipus 原 20 副本的「每次唯一、绕过去重」
                 const tsVal = String(Date.now() + Math.floor(Math.random() * 1000));
                 const rndVal = String(Math.floor(Math.random() * 9000) + 1000);
-                const subAll = (s) => String(s == null ? '' : s).split('[phone]').join(phone).split('[ts]').join(tsVal).split('[rnd]').join(rndVal);
+                const subAll = (s) => String(s == null ? '' : s).split('[phone]').join(phone).split('[ts]').join(tsVal).split('[rnd]').join(rndVal).split('[timestamp]').join(tsVal);
                 const actualUrl = subAll(apiRequest.url || '');
                     
                     // 解析 header（支持对象或字符串，字符串尝试按 JSON 解析）
@@ -4600,7 +4600,20 @@ button:hover {
                         } else if (typeof d === 'string') {
                             body = subAll(d);
                             const t = (h && typeof h === 'object' && (h['Content-Type'] || h['content-type'])) || '';
-                            inferredType = t || (body.trim().startsWith('{') || body.trim().startsWith('[') ? 'application/json' : 'application/x-www-form-urlencoded');
+                            if (t) {
+                                inferredType = t;
+                            } else {
+                                // ⚠️ 修复：单引号 data（如 {'phone': 'xxx'}）先转义为合法 JSON 再发送，
+                                //    否则会被推断为 application/json 但 body 非法，目标服务器解析失败（405/400）
+                                let parsedObj = null;
+                                try { parsedObj = JSON.parse(body.replace(/'/g, '"')); } catch (e) { parsedObj = null; }
+                                if (parsedObj && typeof parsedObj === 'object') {
+                                    body = JSON.stringify(parsedObj);
+                                    inferredType = 'application/json';
+                                } else {
+                                    inferredType = 'application/x-www-form-urlencoded';
+                                }
+                            }
                         }
                         const sendHeaders = {};
                         for (const k in reqHeaders) sendHeaders[k] = reqHeaders[k];
