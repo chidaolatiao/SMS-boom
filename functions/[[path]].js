@@ -10,21 +10,7 @@ export async function onRequest(context) {
   const url = new URL(request.url);
   const pathname = url.pathname;
 
-  // 1. 静态资源和本站关键路径绕过（让 Pages 原生处理）
-  const isStaticAsset =
-    pathname === "/" ||
-    pathname === "/index.html" ||
-    pathname === "/logo.ico" ||
-    pathname === "/logo.gif" ||
-    pathname === "/_headers" ||
-    pathname === "/wrangler.toml" ||
-    pathname === "/wrangler.json";
-
-  if (isStaticAsset) {
-    return context.next();
-  }
-
-  // 2. 获取目标 URL
+  // 1. 获取目标 URL（提前解析，供静态资源判断使用）
   let targetUrl = url.searchParams.get("url");
 
   if (!targetUrl) {
@@ -36,6 +22,24 @@ export async function onRequest(context) {
       // 拼接上原始请求的查询参数（如果有）
       targetUrl = decodeURIComponent(candidate) + url.search;
     }
+  }
+
+  // 2. 静态资源和本站关键路径绕过（让 Pages 原生处理）
+  // ⚠️ 修复（2026-08-23）：必须「没有代理目标」时才绕过静态路径，
+  //    否则 /?url=... 代理请求会被 Pages 当作静态资源：GET 返回 index.html(200)，
+  //    POST 被静态资源服务拒绝(405)。
+  const isStaticAsset =
+    !targetUrl &&
+    (pathname === "/" ||
+      pathname === "/index.html" ||
+      pathname === "/logo.ico" ||
+      pathname === "/logo.gif" ||
+      pathname === "/_headers" ||
+      pathname === "/wrangler.toml" ||
+      pathname === "/wrangler.json");
+
+  if (isStaticAsset) {
+    return context.next();
   }
 
   // 3. 处理 OPTIONS 预检请求
