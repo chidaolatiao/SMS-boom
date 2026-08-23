@@ -4283,9 +4283,11 @@ button:hover {
         
         // 多个代理备选列表（自动切换）
         // ⭐ 优先使用当前站点的本地代理，其次是自定义域名代理
+        // ⚠️ 2026-08-23 修复：本地代理路径由 '/' 改为 '/proxy'——
+        //    '/' 会命中 Workers 静态资源 index.html（静态优先时 Worker 不执行，GET 返回页面/POST 405），
+        //    '/proxy' 无对应静态资产，必然回落到 Worker 代理逻辑（_headers 中已有 /proxy 配置）
         const CORS_PROXIES = [
-            '/',                                                        // ✅ 本地 Page Functions 代理（首选）
-            'https://cf.zk99999.dpdns.org/',                            // ✅ 新增 CF 路由代理（备用）
+            '/proxy',                                                   // ✅ 本地代理（避开 / 静态资源冲突）
         ];
         
         let currentProxyIndex = 0; // 当前使用的代理索引
