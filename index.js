@@ -3,23 +3,7 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
-    // 1. 静态资源和本站关键路径绕过（交由 Workers Assets 原生处理）
-    const isStaticAsset =
-      pathname === "/" ||
-      pathname === "/index.html" ||
-      pathname === "/logo.ico" ||
-      pathname === "/logo.gif" ||
-      pathname === "/_headers" ||
-      pathname === "/wrangler.toml" ||
-      pathname === "/wrangler.json";
-
-    if (isStaticAsset) {
-      // 在 Workers Assets 中，如果不是由脚本处理，会自动尝试匹配静态资源
-      // 我们这里返回 undefined 让 Workers 继续查找资产
-      return env.ASSETS.fetch(request);
-    }
-
-    // 2. 获取目标 URL
+    // 1. 获取目标 URL（提前解析，供静态资源判断使用）
     let targetUrl = url.searchParams.get("url");
 
     if (!targetUrl) {
@@ -31,6 +15,27 @@ export default {
         // 拼接上原始请求的查询参数（如果有）
         targetUrl = decodeURIComponent(candidate) + url.search;
       }
+    }
+
+    // 2. 静态资源和本站关键路径绕过（交由 Workers Assets 原生处理）
+    // ⚠️ 修复（2026-08-23）：必须「没有代理目标」时才绕过静态路径。
+    //    原代码 pathname === "/" 直接绕过，导致 /?url=... 代理请求（pathname 同为 "/"）
+    //    被当作静态资源处理：GET 返回 index.html(200)，POST 被 Assets 拒绝(405)，
+    //    表现为日志中 405 全为 POST、200 全为 GET 的二分模式。
+    const isStaticAsset =
+      !targetUrl &&
+      (pathname === "/" ||
+        pathname === "/index.html" ||
+        pathname === "/logo.ico" ||
+        pathname === "/logo.gif" ||
+        pathname === "/_headers" ||
+        pathname === "/wrangler.toml" ||
+        pathname === "/wrangler.json");
+
+    if (isStaticAsset) {
+      // 在 Workers Assets 中，如果不是由脚本处理，会自动尝试匹配静态资源
+      // 我们这里返回 undefined 让 Workers 继续查找资产
+      return env.ASSETS.fetch(request);
     }
 
     // 3. 处理 OPTIONS 预检请求
